@@ -87,7 +87,6 @@ static const char *browsercmd[]  = { "google-chrome-stable", NULL };
 
 
 static const char *wpcmd[]  = { "/home/fan/bin/change_wallpaper.sh", NULL };
-static const char *sktogglecmd[]  = { "/home/david/scripts/sck-tog.sh", NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "160x48", "-e","tmux",NULL };
 
@@ -98,9 +97,9 @@ static Key keys[] = {
 	{ MODKEY,              XK_d,                    spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,              XK_Return,               spawn,          {.v = termcmd } },
 	{ MODKEY,              XK_g,                    spawn,          {.v = browsercmd } },
-	{ MODKEY|ControlMask,  XK_s,                    spawn,          {.v = sktogglecmd } },
 	{ MODKEY,              XK_b,                    spawn,          {.v = wpcmd } },
 	{ 0,                   XK_Print,                spawn,          {.v = screenshotcmd } },
+	{ MODKEY,                   XK_p,                spawn,          {.v =  wpcmd} },
 	{ MODKEY|ShiftMask,    XK_j,                    rotatestack,    {.i = +1 } },
 	{ MODKEY|ShiftMask,    XK_k,                    rotatestack,    {.i = -1 } },
 	{ MODKEY,              XK_j,                    focusstack,     {.i = +1 } },
@@ -109,15 +108,12 @@ static Key keys[] = {
 	{ MODKEY,              XK_l,                    viewtoright,    {0} },
 	{ MODKEY|ShiftMask,    XK_h,                    tagtoleft,      {0} },
 	{ MODKEY|ShiftMask,    XK_l,                    tagtoright,     {0} },
-//	{ MODKEY|ShiftMask,    XK_h,                    incnmaster,     {.i = +1 } },
-//	{ MODKEY|ShiftMask,    XK_l,                    incnmaster,     {.i = -1 } },
 	{ MODKEY,              XK_h,                    setmfact,       {.f = -0.05} },
 	{ MODKEY,              XK_l,                    setmfact,       {.f = +0.05} },
 	{ MODKEY,              XK_u,                    hidewin,        {0} },
 	{ MODKEY|ShiftMask,    XK_u,                    restorewin,     {0} },
 	{ MODKEY,              XK_i,                    hideotherwins,  {0}},
 	{ MODKEY|ShiftMask,    XK_i,                    restoreotherwins, {0}},
-//	{ MODKEY|ShiftMask,    XK_Return,               zoom,           {0} },
 	{ MODKEY,              XK_Tab,                  view,           {0} },
 	{ MODKEY|ShiftMask,    XK_q,                    killclient,     {0} },
 	{ MODKEY,              XK_t,                    setlayout,      {.v = &layouts[0]} },
