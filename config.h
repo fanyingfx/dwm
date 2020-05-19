@@ -17,7 +17,7 @@ static const int smartgaps          = 1;        /* 1 means no outer gap when the
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
 static const Bool viewontag         = True;     /* Switch view on tag switch */
-static const char *fonts[]          = { "SauceCodePro Nerd Font Mono:size=16" };
+static const char *fonts[]          = { "URWGothic-Book:size=12" };
 static const char dmenufont[]       = "SauceCodePro Nerd Font Mono:size=16";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
@@ -47,12 +47,12 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Google-chrome",  NULL,       NULL,       1<<1 ,       0,           -1 },
+	/* class                  instance    title       tags mask     isfloating   monitor */
+	{ "Google-chrome",        NULL,       NULL,       1<<1 ,       0,           -1 },
 	{ "netease-cloud-music",  NULL,       NULL,       1<<6 ,       0,           -1 },
-	{ "dida",  NULL,       NULL,       1<<7 ,       0,           -1 },
-	{ "Joplin",  NULL,       NULL,       1<<3 ,       0,           -1 },
-	{ "vmware-view",  NULL,       NULL,       1<<0 ,       0,           -1 },
+	{ "dida",                 NULL,       NULL,       1<<7 ,       0,           -1 },
+	{ "Joplin",               NULL,       NULL,       1<<3 ,       0,           -1 },
+	{ "vmware-View",          NULL,       NULL,       1<<0 ,       0,           -1 },
 	
 };
 
@@ -99,7 +99,7 @@ static Key keys[] = {
 	{ MODKEY,              XK_g,                    spawn,          {.v = browsercmd } },
 	{ MODKEY,              XK_b,                    spawn,          {.v = wpcmd } },
 	{ 0,                   XK_Print,                spawn,          {.v = screenshotcmd } },
-	{ MODKEY,                   XK_p,                spawn,          {.v =  wpcmd} },
+	{ MODKEY,              XK_p,                    spawn,          {.v =  wpcmd} },
 	{ MODKEY|ShiftMask,    XK_j,                    rotatestack,    {.i = +1 } },
 	{ MODKEY|ShiftMask,    XK_k,                    rotatestack,    {.i = -1 } },
 	{ MODKEY,              XK_j,                    focusstack,     {.i = +1 } },
@@ -118,10 +118,10 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,    XK_q,                    killclient,     {0} },
 	{ MODKEY,              XK_t,                    setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,              XK_m,                    setlayout,      {.v = &layouts[2]} },
-	{ MODKEY|ShiftMask,    XK_f,                    fullscreen,     {0} },
+	{ MODKEY,              XK_f,                    fullscreen,     {0} },
 	{ MODKEY,              XK_space,                setlayout,      {0} },
 	{ MODKEY|ShiftMask,    XK_space,                togglefloating, {0} },
-	{ MODKEY,              XK_Return,           togglescratch,  {.v = scratchpadcmd } },
+	{ MODKEY,              XK_Return,               togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,              XK_0,                    view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,    XK_0,                    tag,            {.ui = ~0 } },
 	{ MODKEY,              XK_comma,                focusmon,       {.i = -1 } },
