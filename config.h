@@ -53,7 +53,8 @@ static const Rule rules[] = {
 	{ "dida",                 NULL,       NULL,       1<<7 ,       0,           -1 },
 	{ "Joplin",               NULL,       NULL,       1<<3 ,       0,           -1 },
 	{ "vmware-View",          NULL,       NULL,       1<<0 ,       0,           -1 },
-	{ "Code",          NULL,       NULL,       1<<2 ,       0,           -1 },
+	{ "Code",                 NULL,       NULL,       1<<2 ,       0,           -1 },
+	{ "Pcmanfm",              NULL,       NULL,       1<<2 ,       1,           -1 },
 	
 };
 
@@ -96,7 +97,7 @@ static const char *screenshotcmd[] = { "flameshot", "gui", NULL };
 static Key keys[] = {
 	/* modifier            key                      function        argument */
 	{ MODKEY,              XK_d,                    spawn,          {.v = dmenucmd } },
-	{ MODKEY|ShiftMask,              XK_Return,               spawn,          {.v = termcmd } },
+	{ MODKEY|ShiftMask,    XK_Return,               spawn,          {.v = termcmd } },
 	{ MODKEY,              XK_g,                    spawn,          {.v = browsercmd } },
 	{ MODKEY,              XK_b,                    spawn,          {.v = wpcmd } },
 	{ 0,                   XK_Print,                spawn,          {.v = screenshotcmd } },
@@ -147,8 +148,6 @@ static Button buttons[] = {
 	/* click                event mask      button          function        argument */
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
-//	{ ClkWinTitle,          0,              Button1,        togglewin,      {0} },
-//{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
 	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
