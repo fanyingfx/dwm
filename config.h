@@ -54,7 +54,9 @@ static const Rule rules[] = {
 	{ "Joplin",               NULL,       NULL,       1<<3 ,       0,           -1 },
 	{ "vmware-View",          NULL,       NULL,       1<<0 ,       0,           -1 },
 	{ "Code",                 NULL,       NULL,       1<<2 ,       0,           -1 },
+	{ "jetbrains-idea",       NULL,       NULL,       1<<2 ,       0,           -1 },
 	{ "Pcmanfm",              NULL,       NULL,       1<<2 ,       1,           -1 },
+	{ "Anki",                 NULL,       NULL,       1<<5 ,       1,           -1 },
 	
 };
 
