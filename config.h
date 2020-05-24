@@ -56,7 +56,7 @@ static const Rule rules[] = {
 	{ "Code",                 NULL,       NULL,       1<<2 ,       0,           -1 },
 	{ "jetbrains-idea",       NULL,       NULL,       1<<2 ,       0,           -1 },
 	{ "Pcmanfm",              NULL,       NULL,       1<<2 ,       1,           -1 },
-	{ "Anki",                 NULL,       NULL,       1<<5 ,       1,           -1 },
+	{ "Anki",                 NULL,       NULL,       1<<5 ,       0,           -1 },
 	
 };
 
@@ -95,6 +95,7 @@ static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "160x48", "-e","tmux",NULL };
 
 static const char *screenshotcmd[] = { "flameshot", "gui", NULL };
+static const char *shutdowncmd[] = { "shutdown", "-h","now", NULL };
 
 static Key keys[] = {
 	/* modifier            key                      function        argument */
@@ -103,6 +104,7 @@ static Key keys[] = {
 	{ MODKEY,              XK_g,                    spawn,          {.v = browsercmd } },
 	{ MODKEY,              XK_b,                    spawn,          {.v = wpcmd } },
 	{ 0,                   XK_Print,                spawn,          {.v = screenshotcmd } },
+	{ MODKEY|ShiftMask,    XK_s,                    spawn,          {.v = shutdowncmd } },
 	{ MODKEY,              XK_p,                    spawn,          {.v =  wpcmd} },
 	{ MODKEY|ShiftMask,    XK_j,                    rotatestack,    {.i = +1 } },
 	{ MODKEY|ShiftMask,    XK_k,                    rotatestack,    {.i = -1 } },
