@@ -40,7 +40,7 @@ static const unsigned int alphas[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "1-work", "2-normal", "3-dev", "4-note", "\ue62e", "6-Eng", "7-relax", "8-todo", "9-nnn" };
+static const char *tags[] = { "1-work", "2-normal", "3-dev", "4-note", "5- ", "6-Anki", "7-relax", "8-todo", "9-nnn" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -110,8 +110,6 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,    XK_k,                    rotatestack,    {.i = -1 } },
 	{ MODKEY,              XK_j,                    focusstack,     {.i = +1 } },
 	{ MODKEY,              XK_k,                    focusstack,     {.i = -1 } },
-	{ MODKEY,              XK_h,                    viewtoleft,     {0} },
-	{ MODKEY,              XK_l,                    viewtoright,    {0} },
 	{ MODKEY|ShiftMask,    XK_h,                    tagtoleft,      {0} },
 	{ MODKEY|ShiftMask,    XK_l,                    tagtoright,     {0} },
 	{ MODKEY,              XK_h,                    setmfact,       {.f = -0.05} },
@@ -159,6 +157,6 @@ static Button buttons[] = {
 	{ ClkTagBar,            0,              Button1,        view,           {0} },
 	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
-	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
+	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} }
 };
 
