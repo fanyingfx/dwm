@@ -52,7 +52,7 @@ static const Rule rules[] = {
 	{ "netease-cloud-music",  NULL,       NULL,       1<<6 ,       0,           -1 },
 	{ "dida",                 NULL,       NULL,       1<<7 ,       0,           -1 },
 	{ "mubu",                 NULL,       NULL,       1<<4 ,       0,           -1 },
-	{ "Joplin",               NULL,       NULL,       1<<3 ,       0,           -1 },
+	{ "obsidian",             NULL,       NULL,       1<<3 ,       0,           -1 },
 	{ "vmware-View",          NULL,       NULL,       1<<0 ,       0,           -1 },
 	{ "Code",                 NULL,       NULL,       1<<2 ,       0,           -1 },
 	{ "jetbrains-idea",       NULL,       NULL,       1<<2 ,       0,           -1 },
