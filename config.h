@@ -50,6 +50,7 @@ static const Rule rules[] = {
 	/* class                  instance    title       tags mask     isfloating   monitor */
 	{ "Google-chrome",        NULL,       NULL,       1<<1 ,       0,           -1 },
 	{ "netease-cloud-music",  NULL,       NULL,       1<<6 ,       0,           -1 },
+	{ NULL,			  "tim.exe",       NULL,       1<<6 ,       0,           -1 },
 	{ "dida",                 NULL,       NULL,       1<<7 ,       0,           -1 },
 	{ "mubu",                 NULL,       NULL,       1<<4 ,       0,           -1 },
 	{ "obsidian",             NULL,       NULL,       1<<3 ,       0,           -1 },
