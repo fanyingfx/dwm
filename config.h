@@ -49,6 +49,7 @@ static const Rule rules[] = {
 	 */
 	/* class                  instance    title       tags mask     isfloating   monitor */
 	{ "Google-chrome",        NULL,       NULL,       1<<1 ,       0,           -1 },
+	{ "Vivaldi-stable",        NULL,       NULL,       1<<1 ,       0,           -1 },
 	{ "netease-cloud-music",  NULL,       NULL,       1<<6 ,       0,           -1 },
 	{ NULL,			  "tim.exe",  NULL,       1<<6 ,       0,           -1 },
 	{ "dida",                 NULL,       NULL,       1<<7 ,       0,           -1 },
@@ -98,6 +99,7 @@ static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "160x48
 
 static const char *screenshotcmd[] = { "flameshot", "gui", NULL };
 static const char *shutdowncmd[] = { "shutdown", "-h","now", NULL };
+static const char *rebootcmd[] = { "shutdown", "-r","now", NULL };
 
 static Key keys[] = {
 	/* modifier            key                      function        argument */
@@ -107,6 +109,7 @@ static Key keys[] = {
 	{ MODKEY,              XK_b,                    spawn,          {.v = wpcmd } },
 	{ 0,                   XK_Print,                spawn,          {.v = screenshotcmd } },
 	{ MODKEY|ShiftMask,    XK_s,                    spawn,          {.v = shutdowncmd } },
+	{ MODKEY|ShiftMask,    XK_r,                    spawn,          {.v = rebootcmd} },
 	{ MODKEY,              XK_p,                    spawn,          {.v =  wpcmd} },
 	{ MODKEY|ShiftMask,    XK_j,                    rotatestack,    {.i = +1 } },
 	{ MODKEY|ShiftMask,    XK_k,                    rotatestack,    {.i = -1 } },
