@@ -17,7 +17,7 @@ static const int smartgaps          = 1;        /* 1 means no outer gap when the
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
 static const Bool viewontag         = True;     /* Switch view on tag switch */
-static const char *fonts[]          = { "URWGothic-Book:size=12" };
+static const char *fonts[]          = { "Ubuntu Mono Nerd Font:size=14" };
 static const char dmenufont[]       = "SauceCodePro Nerd Font Mono:size=16";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
@@ -95,11 +95,15 @@ static const char *browsercmd[]  = { "google-chrome-stable", NULL };
 
 static const char *wpcmd[]  = { "/home/fan/bin/change_wallpaper.sh", NULL };
 static const char scratchpadname[] = "scratchpad";
-static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "160x48", "-e","tmux",NULL };
+static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "140x40", "-e","tmux",NULL };
 
 static const char *screenshotcmd[] = { "flameshot", "gui", NULL };
 static const char *shutdowncmd[] = { "shutdown", "-h","now", NULL };
 static const char *rebootcmd[] = { "shutdown", "-r","now", NULL };
+
+static const char *mutecmd[] = { "pactl", "set-sink-mute", "0", "toggle", NULL };
+static const char *volupcmd[] = { "pactl", "set-sink-volume", "0", "+5%", NULL };
+static const char *voldowncmd[] = { "pactl", "set-sink-volume", "0", "-5%", NULL };
 
 static Key keys[] = {
 	/* modifier            key                      function        argument */
@@ -107,6 +111,9 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,    XK_Return,               spawn,          {.v = termcmd } },
 	{ MODKEY,              XK_g,                    spawn,          {.v = browsercmd } },
 	{ MODKEY,              XK_b,                    spawn,          {.v = wpcmd } },
+	{ 0,                   XF86XK_AudioLowerVolume, spawn, 		{.v = voldowncmd } },
+	{ 0,                   XF86XK_AudioMute, 	spawn, 		{.v = mutecmd } },
+	{ 0,                   XF86XK_AudioRaiseVolume, spawn, 		{.v = volupcmd   } },
 	{ 0,                   XK_Print,                spawn,          {.v = screenshotcmd } },
 	{ MODKEY|ShiftMask,    XK_s,                    spawn,          {.v = shutdowncmd } },
 	{ MODKEY|ShiftMask,    XK_r,                    spawn,          {.v = rebootcmd} },
