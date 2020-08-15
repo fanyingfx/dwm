@@ -105,6 +105,9 @@ static const char *mutecmd[] = { "pactl", "set-sink-mute", "0", "toggle", NULL }
 static const char *volupcmd[] = { "pactl", "set-sink-volume", "0", "+5%", NULL };
 static const char *voldowncmd[] = { "pactl", "set-sink-volume", "0", "-5%", NULL };
 
+static const char *brupcmd[] = { "light", "-A", "10", NULL };
+static const char *brdowncmd[] = { "light", "-U", "10", NULL };
+
 static Key keys[] = {
 	/* modifier            key                      function        argument */
 	{ MODKEY,              XK_d,                    spawn,          {.v = dmenucmd } },
@@ -114,6 +117,9 @@ static Key keys[] = {
 	{ 0,                   XF86XK_AudioLowerVolume, spawn, 		{.v = voldowncmd } },
 	{ 0,                   XF86XK_AudioMute, 	spawn, 		{.v = mutecmd } },
 	{ 0,                   XF86XK_AudioRaiseVolume, spawn, 		{.v = volupcmd   } },
+	{ 0,		       XF86XK_MonBrightnessUp,	spawn,		{.v = brupcmd} },
+	{ 0,		       XF86XK_MonBrightnessDown,	spawn,		{.v = brdowncmd} },
+
 	{ 0,                   XK_Print,                spawn,          {.v = screenshotcmd } },
 	{ MODKEY|ShiftMask,    XK_s,                    spawn,          {.v = shutdowncmd } },
 	{ MODKEY|ShiftMask,    XK_r,                    spawn,          {.v = rebootcmd} },
