@@ -3,7 +3,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 2;        /* border pixel of windows */
+static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayspacing = 2;   /* systray spacing */
@@ -24,7 +24,9 @@ static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#ffffff";
 static const char col_cyan[]        = "#37474F";
+//static const char col_border[]        = "#FF9933";
 static const char col_border[]        = "#42A5F5";
+//static const char col_border[]        = "#33FFFF";
 static const unsigned int baralpha = 0xd0;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]      = {
@@ -40,7 +42,7 @@ static const unsigned int alphas[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "1-work", "2-normal", "3-dev", "4-note", "5-Draw", "6-Anki", "7-relax", "8-todo", "9-nnn" };
+static const char *tags[] = { "1-work", "2-normal", "3-dev", "4-code","5-note", "6-Anki", "7-relax", "8-todo", "9-nnn" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -53,12 +55,12 @@ static const Rule rules[] = {
 	{ "netease-cloud-music",  NULL,       NULL,       1<<6 ,       0,           -1 },
 	{ NULL,			  "tim.exe",  NULL,       1<<6 ,       0,           -1 },
 	{ "dida",                 NULL,       NULL,       1<<7 ,       0,           -1 },
-	{ "draw.io",              NULL,       NULL,       1<<4 ,       0,           -1 },
-	{ "obsidian",             NULL,       NULL,       1<<3 ,       0,           -1 },
+	//{ "draw.io",              NULL,       NULL,       1<<4 ,       0,           -1 },
+	{ "obsidian",             NULL,       NULL,       1<<4 ,       0,           -1 },
+	{ "Joplin",               NULL,       NULL,       1<<8 ,       0,           -1 },
 	{ "vmware-View",          NULL,       NULL,       1<<0 ,       0,           -1 },
-	{ "Code",                 NULL,       NULL,       1<<2 ,       0,           -1 },
+	{ "Code",                 NULL,       NULL,       1<<3 ,       0,           -1 },
 	{ "jetbrains-idea",       NULL,       NULL,       1<<2 ,       0,           -1 },
-	{ "Pcmanfm",              NULL,       NULL,       1<<2 ,       1,           -1 },
 	{ "Anki",                 NULL,       NULL,       1<<5 ,       0,           -1 },
 	
 };
@@ -95,7 +97,7 @@ static const char *browsercmd[]  = { "google-chrome-stable", NULL };
 
 static const char *wpcmd[]  = { "/home/fan/bin/change_wallpaper.sh", NULL };
 static const char scratchpadname[] = "scratchpad";
-static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "160x48", "-e","tmux",NULL };
+static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "200x58", "-e","tmux",NULL };
 
 static const char *screenshotcmd[] = { "flameshot", "gui", NULL };
 static const char *shutdowncmd[] = { "shutdown", "-h","now", NULL };
