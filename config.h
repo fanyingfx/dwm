@@ -42,7 +42,7 @@ static const unsigned int alphas[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "1-work", "2-normal", "3-dev", "4-code","5-note", "6-Anki", "7-relax", "8-todo", "9-nnn" };
+static const char *tags[] = { "1-ToDo", "2-Chrome", "3-Dev", "4-Code","5-Note", "6-Anki", "7-IM", "8-List", "9-Temp" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -50,18 +50,18 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class                  instance    title       tags mask     isfloating   monitor */
+	{ "dida",                 NULL,       NULL,       1<<0 ,       0,           -1 },
 	{ "Google-chrome",        NULL,       NULL,       1<<1 ,       0,           -1 },
-	{ "Vivaldi-stable",        NULL,       NULL,       1<<1 ,       0,           -1 },
+	{ "Vivaldi-stable",       NULL,       NULL,       1<<1 ,       0,           -1 },
+	{ "jetbrains-idea",       NULL,       NULL,       1<<2 ,       0,           -1 },
+	{ "Code",                 NULL,       NULL,       1<<3 ,       0,           -1 },
+	{ "obsidian",             NULL,       NULL,       1<<4 ,       0,           -1 },
+	{ "Anki",                 NULL,       NULL,       1<<5 ,       0,           -1 },
 	{ "netease-cloud-music",  NULL,       NULL,       1<<6 ,       0,           -1 },
 	{ NULL,			  "tim.exe",  NULL,       1<<6 ,       0,           -1 },
-	{ "dida",                 NULL,       NULL,       1<<7 ,       0,           -1 },
-	//{ "draw.io",              NULL,       NULL,       1<<4 ,       0,           -1 },
-	{ "obsidian",             NULL,       NULL,       1<<4 ,       0,           -1 },
 	{ "Joplin",               NULL,       NULL,       1<<8 ,       0,           -1 },
-	{ "vmware-View",          NULL,       NULL,       1<<0 ,       0,           -1 },
-	{ "Code",                 NULL,       NULL,       1<<3 ,       0,           -1 },
-	{ "jetbrains-idea",       NULL,       NULL,       1<<2 ,       0,           -1 },
-	{ "Anki",                 NULL,       NULL,       1<<5 ,       0,           -1 },
+	{ "Steam",               NULL,       NULL,       1<<8 ,       0,           -1 },
+	{ "Dynalist",             NULL,       NULL,       1<<7 ,       0,           -1 },
 	
 };
 
@@ -110,9 +110,16 @@ static const char *voldowncmd[] = { "pactl", "set-sink-volume", "0", "-5%", NULL
 static const char *brupcmd[] = { "light", "-A", "10", NULL };
 static const char *brdowncmd[] = { "light", "-U", "10", NULL };
 
+
+//static const char *copycmd[] ={"xdotool","getactivewindow", "key", "ctrl+0xff63", NULL};
+//static const char *pastecmd[] ={"xdotool","getactivewindow", "key","shift+0xff63", NULL};
+
+
 static Key keys[] = {
 	/* modifier            key                      function        argument */
-	{ MODKEY,              XK_d,                    spawn,          {.v = dmenucmd } },
+//	{ MODKEY	,      XK_c,			spawn,		{.v=copycmd}},
+//	{ MODKEY	,      XK_v,			spawn,		{.v=pastecmd}},
+	{ MODKEY,              XK_space,                    spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,    XK_Return,               spawn,          {.v = termcmd } },
 	{ MODKEY,              XK_g,                    spawn,          {.v = browsercmd } },
 	{ MODKEY,              XK_b,                    spawn,          {.v = wpcmd } },
@@ -126,14 +133,16 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,    XK_s,                    spawn,          {.v = shutdowncmd } },
 	{ MODKEY|ShiftMask,    XK_r,                    spawn,          {.v = rebootcmd} },
 	{ MODKEY,              XK_p,                    spawn,          {.v =  wpcmd} },
-	{ MODKEY|ShiftMask,    XK_j,                    rotatestack,    {.i = +1 } },
-	{ MODKEY|ShiftMask,    XK_k,                    rotatestack,    {.i = -1 } },
-	{ MODKEY,              XK_j,                    focusstack,     {.i = +1 } },
-	{ MODKEY,              XK_k,                    focusstack,     {.i = -1 } },
-	{ MODKEY|ShiftMask,    XK_h,                    tagtoleft,      {0} },
-	{ MODKEY|ShiftMask,    XK_l,                    tagtoright,     {0} },
+
 	{ MODKEY,              XK_h,                    setmfact,       {.f = -0.05} },
+	{ MODKEY|ShiftMask,    XK_h,                    tagtoleft,      {0} },
+	{ MODKEY,              XK_j,                    focusstack,     {.i = +1 } },
+	{ MODKEY|ShiftMask,    XK_j,                    rotatestack,    {.i = +1 } },
+	{ MODKEY,              XK_k,                    focusstack,     {.i = -1 } },
+	{ MODKEY|ShiftMask,    XK_k,                    rotatestack,    {.i = -1 } },
 	{ MODKEY,              XK_l,                    setmfact,       {.f = +0.05} },
+	{ MODKEY|ShiftMask,    XK_l,                    tagtoright,     {0} },
+
 	{ MODKEY,              XK_u,                    hidewin,        {0} },
 	{ MODKEY|ShiftMask,    XK_u,                    restorewin,     {0} },
 	{ MODKEY,              XK_i,                    hideotherwins,  {0}},
@@ -143,7 +152,7 @@ static Key keys[] = {
 	{ MODKEY,              XK_t,                    setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,              XK_m,                    setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,              XK_f,                    fullscreen,     {0} },
-	{ MODKEY,              XK_space,                setlayout,      {0} },
+	{ MODKEY,              XK_d,                setlayout,      {0} },
 	{ MODKEY|ShiftMask,    XK_space,                togglefloating, {0} },
 	{ MODKEY,              XK_Return,               togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,              XK_0,                    view,           {.ui = ~0 } },
