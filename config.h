@@ -90,7 +90,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 //static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *dmenucmd[] = { "rofi","-show","combi"};
+static const char *dmenucmd[] = { "rofi","-show","combi",NULL};
 static const char *termcmd[]  = { "st", "-e","tmux" };
 static const char *browsercmd[]  = { "google-chrome-stable", NULL };
 
@@ -100,8 +100,9 @@ static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "200x58", "-e","tmux",NULL };
 
 static const char *screenshotcmd[] = { "flameshot", "gui", NULL };
-static const char *shutdowncmd[] = { "shutdown", "-h","now", NULL };
+static const char *shutdowncmd[] = { "/home/fan/bin/update_shutdown.sh", NULL };
 static const char *rebootcmd[] = { "shutdown", "-r","now", NULL };
+static const char *suspendcmd[] = { "sudo", "systemctl","suspend", NULL };
 
 static const char *mutecmd[] = { "pactl", "set-sink-mute", "0", "toggle", NULL };
 static const char *volupcmd[] = { "pactl", "set-sink-volume", "0", "+5%", NULL };
@@ -109,6 +110,7 @@ static const char *voldowncmd[] = { "pactl", "set-sink-volume", "0", "-5%", NULL
 
 static const char *brupcmd[] = { "light", "-A", "10", NULL };
 static const char *brdowncmd[] = { "light", "-U", "10", NULL };
+
 
 
 //static const char *copycmd[] ={"xdotool","getactivewindow", "key", "ctrl+0xff63", NULL};
@@ -131,6 +133,7 @@ static Key keys[] = {
 
 	{ 0,                   XK_Print,                spawn,          {.v = screenshotcmd } },
 	{ MODKEY|ShiftMask,    XK_s,                    spawn,          {.v = shutdowncmd } },
+	{ MODKEY,    	       XK_s,                    spawn,          {.v = suspendcmd } },
 	{ MODKEY|ShiftMask,    XK_r,                    spawn,          {.v = rebootcmd} },
 	{ MODKEY,              XK_p,                    spawn,          {.v =  wpcmd} },
 
