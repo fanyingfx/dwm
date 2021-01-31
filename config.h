@@ -56,6 +56,7 @@ static const Rule rules[] = {
 	{ "jetbrains-idea",       NULL,       NULL,       1<<2 ,       0,           -1 },
 	{ "Code",                 NULL,       NULL,       1<<3 ,       0,           -1 },
 	{ "obsidian",             NULL,       NULL,       1<<4 ,       0,           -1 },
+	{ "siyuan",               NULL,       NULL,       1<<4 ,       0,           -1 },
 	{ "Anki",                 NULL,       NULL,       1<<5 ,       0,           -1 },
 	{ "netease-cloud-music",  NULL,       NULL,       1<<6 ,       0,           -1 },
 	{ NULL,			  "tim.exe",  NULL,       1<<6 ,       0,           -1 },
@@ -119,9 +120,7 @@ static const char *brdowncmd[] = { "light", "-U", "10", NULL };
 
 static Key keys[] = {
 	/* modifier            key                      function        argument */
-//	{ MODKEY	,      XK_c,			spawn,		{.v=copycmd}},
-//	{ MODKEY	,      XK_v,			spawn,		{.v=pastecmd}},
-	{ MODKEY,              XK_space,                    spawn,          {.v = dmenucmd } },
+	{ MODKEY,              XK_space,                spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,    XK_Return,               spawn,          {.v = termcmd } },
 	{ MODKEY,              XK_g,                    spawn,          {.v = browsercmd } },
 	{ MODKEY,              XK_b,                    spawn,          {.v = wpcmd } },
