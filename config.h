@@ -100,7 +100,7 @@ static const char *wpcmd[]  = { "/home/fan/bin/change_wallpaper.sh", NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "200x58", "-e","tmux",NULL };
 
-static const char *screenshotcmd[] = { "flameshot", "gui", NULL };
+static const char *screenshotcmd[] = { "proxychains","flameshot", "gui", NULL };
 static const char *shutdowncmd[] = { "/home/fan/bin/update_shutdown.sh", NULL };
 static const char *rebootcmd[] = { "shutdown", "-r","now", NULL };
 static const char *suspendcmd[] = { "sudo", "systemctl","suspend", NULL };
