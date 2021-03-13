@@ -57,6 +57,7 @@ static const Rule rules[] = {
 	{ "Code",                 NULL,       NULL,       1<<3 ,       0,           -1 },
 	{ "obsidian",             NULL,       NULL,       1<<4 ,       0,           -1 },
 	{ "siyuan",               NULL,       NULL,       1<<4 ,       0,           -1 },
+	{ "Emacs",                NULL,       NULL,       1<<4 ,       0,           -1 },
 	{ "Anki",                 NULL,       NULL,       1<<5 ,       0,           -1 },
 	{ "netease-cloud-music",  NULL,       NULL,       1<<6 ,       0,           -1 },
 	{ NULL,			  "tim.exe",  NULL,       1<<6 ,       0,           -1 },
@@ -100,7 +101,7 @@ static const char *wpcmd[]  = { "/home/fan/bin/change_wallpaper.sh", NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "200x58", "-e","tmux",NULL };
 
-static const char *screenshotcmd[] = { "proxychains","flameshot", "gui", NULL };
+static const char *screenshotcmd[] = { "flameshot", "gui", NULL };
 static const char *shutdowncmd[] = { "/home/fan/bin/update_shutdown.sh", NULL };
 static const char *rebootcmd[] = { "shutdown", "-r","now", NULL };
 static const char *suspendcmd[] = { "sudo", "systemctl","suspend", NULL };
