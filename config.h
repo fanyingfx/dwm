@@ -42,7 +42,7 @@ static const unsigned int alphas[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "1-ToDo", "2-Chrome", "3-Dev", "4-Code","5-Note", "6-Anki", "7-IM", "8-List", "9-Temp" };
+static const char *tags[] = { "1-ToDo", "2-Web", "3-Note", "4-Code","5-Dev", "6-Anki", "7-IM", "8-List", "9-Temp" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -52,12 +52,14 @@ static const Rule rules[] = {
 	/* class                  instance    title       tags mask     isfloating   monitor */
 	{ "dida",                 NULL,       NULL,       1<<0 ,       0,           -1 },
 	{ "Google-chrome",        NULL,       NULL,       1<<1 ,       0,           -1 },
+	{ "Microsoft-edge-dev",   NULL,       NULL,       1<<1 ,       0,           -1 },
 	{ "Vivaldi-stable",       NULL,       NULL,       1<<1 ,       0,           -1 },
-	{ "jetbrains-idea",       NULL,       NULL,       1<<2 ,       0,           -1 },
+	{ "jetbrains-idea",       NULL,       NULL,       1<<4 ,       0,           -1 },
 	{ "Code",                 NULL,       NULL,       1<<3 ,       0,           -1 },
-	{ "obsidian",             NULL,       NULL,       1<<4 ,       0,           -1 },
-	{ "siyuan",               NULL,       NULL,       1<<4 ,       0,           -1 },
-	{ "Emacs",                NULL,       NULL,       1<<4 ,       0,           -1 },
+	{ "obsidian",             NULL,       NULL,       1<<2 ,       0,           -1 },
+	{ "siyuan",               NULL,       NULL,       1<<2 ,       0,           -1 },
+	{ "RemNote",               NULL,       NULL,       1<<2 ,       0,           -1 },
+	{ "Emacs",                NULL,       NULL,       1<<2 ,       0,           -1 },
 	{ "Anki",                 NULL,       NULL,       1<<5 ,       0,           -1 },
 	{ "netease-cloud-music",  NULL,       NULL,       1<<6 ,       0,           -1 },
 	{ NULL,			  "tim.exe",  NULL,       1<<6 ,       0,           -1 },
@@ -95,6 +97,7 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "rofi","-show","combi",NULL};
 static const char *termcmd[]  = { "st", "-e","tmux" };
 static const char *browsercmd[]  = { "google-chrome-stable", NULL };
+static const char *emacscmd[]  = { "emacs", NULL };
 
 
 static const char *wpcmd[]  = { "/home/fan/bin/change_wallpaper.sh", NULL };
@@ -104,7 +107,7 @@ static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "200x58
 static const char *screenshotcmd[] = { "flameshot", "gui", NULL };
 static const char *shutdowncmd[] = { "/home/fan/bin/update_shutdown.sh", NULL };
 static const char *rebootcmd[] = { "shutdown", "-r","now", NULL };
-static const char *suspendcmd[] = { "sudo", "systemctl","suspend", NULL };
+static const char *suspendcmd[] = {  "systemctl","suspend", NULL };
 
 static const char *mutecmd[] = { "pactl", "set-sink-mute", "0", "toggle", NULL };
 static const char *volupcmd[] = { "pactl", "set-sink-volume", "0", "+5%", NULL };
@@ -112,7 +115,9 @@ static const char *voldowncmd[] = { "pactl", "set-sink-volume", "0", "-5%", NULL
 
 static const char *brupcmd[] = { "light", "-A", "10", NULL };
 static const char *brdowncmd[] = { "light", "-U", "10", NULL };
-
+static const char *clearpdfcmd[] = { "/home/fan/bin/copy_without_linebreaks.sh", NULL };
+static const char *change_to_windows[] = {"ddcutil","-d","1", "setvcp", "60", "0x11",NULL};
+static const char *change_to_linux[] = {"ddcutil","-d","1", "setvcp", "60", "0x0f",NULL};
 
 
 //static const char *copycmd[] ={"xdotool","getactivewindow", "key", "ctrl+0xff63", NULL};
@@ -124,6 +129,7 @@ static Key keys[] = {
 	{ MODKEY,              XK_space,                spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,    XK_Return,               spawn,          {.v = termcmd } },
 	{ MODKEY,              XK_g,                    spawn,          {.v = browsercmd } },
+	{ MODKEY,              XK_e,                    spawn,          {.v = emacscmd } },
 	{ MODKEY,              XK_b,                    spawn,          {.v = wpcmd } },
 	{ 0,                   XF86XK_AudioLowerVolume, spawn, 		{.v = voldowncmd } },
 	{ 0,                   XF86XK_AudioMute, 	spawn, 		{.v = mutecmd } },
@@ -136,6 +142,8 @@ static Key keys[] = {
 	{ MODKEY,    	       XK_s,                    spawn,          {.v = suspendcmd } },
 	{ MODKEY|ShiftMask,    XK_r,                    spawn,          {.v = rebootcmd} },
 	{ MODKEY,              XK_p,                    spawn,          {.v =  wpcmd} },
+	{ MODKEY,              XK_c,                    spawn,          {.v =  clearpdfcmd} },
+    { MODKEY,              XK_w,                    spawn,          {.v = change_to_windows}},
 
 	{ MODKEY,              XK_h,                    setmfact,       {.f = -0.05} },
 	{ MODKEY|ShiftMask,    XK_h,                    tagtoleft,      {0} },
@@ -143,8 +151,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,    XK_j,                    rotatestack,    {.i = +1 } },
 	{ MODKEY,              XK_k,                    focusstack,     {.i = -1 } },
 	{ MODKEY|ShiftMask,    XK_k,                    rotatestack,    {.i = -1 } },
-	{ MODKEY,              XK_l,                    setmfact,       {.f = +0.05} },
-	{ MODKEY|ShiftMask,    XK_l,                    tagtoright,     {0} },
+	{ MODKEY|ShiftMask,    XK_l,                    setmfact,       {.f = +0.05} },
+    { MODKEY,              XK_l,                    spawn,          {.v = change_to_linux}},
 
 	{ MODKEY,              XK_u,                    hidewin,        {0} },
 	{ MODKEY|ShiftMask,    XK_u,                    restorewin,     {0} },
