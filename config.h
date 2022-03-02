@@ -127,6 +127,7 @@ static const char *change_to_linux[] = {"ddcutil","-d","1", "setvcp", "60", "0x0
 static Key keys[] = {
 	/* modifier            key                      function        argument */
 	{ MODKEY,              XK_d,                spawn,          {.v = dmenucmd } },
+	{ MODKEY,              XK_space,                spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,    XK_Return,               spawn,          {.v = termcmd } },
 	{ MODKEY,              XK_g,                    spawn,          {.v = browsercmd } },
 	{ MODKEY,              XK_e,                    spawn,          {.v = emacscmd } },
