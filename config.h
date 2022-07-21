@@ -77,6 +77,7 @@ static const Rule rules[] = {
         {"org.remmina.Remmina", NULL, NULL, 1 << 7, 0, -1},
         {"GoldenDict",          NULL, NULL, NULL,   1, -1},
         {"Zeal",                NULL, NULL, NULL,   1, -1},
+        {NULL,                NULL, "Ozone X11", NULL,   1, -1},
 
 };
 
